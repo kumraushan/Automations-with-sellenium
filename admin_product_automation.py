@@ -9,7 +9,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 #path to your chrome drivers
 loc = 'chromedriver_linux64/chromedriver'
 driver = webdriver.Chrome(loc)
-driver.get("http://web.thedirtylaundry.in/admin/db_manager/product/add/")
+driver.get("http://admin.thedirtylaundry.in/admin/db_manager/product/add/")
 username = driver.find_element_by_id('id_username')
 username.send_keys('admin')
 password = driver.find_element_by_id('id_password')
@@ -36,7 +36,7 @@ for item in data:
     #getting the webelements by locator
 
     select = Select(driver.find_element_by_name('product_type'))
-    select.select_by_value('3')
+    select.select_by_value('1')
     name = driver.find_element_by_name('name')
     spec = driver.find_element_by_id('id_specification')
     short_desc = driver.find_element_by_id('id_short_desp')
@@ -63,11 +63,11 @@ for item in data:
     size_xl = driver.find_element_by_xpath("//select[@name='size']/option[text()=" + " '" + excel_size[3] + "'" + "]")
 
 
-    color_black = driver.find_element_by_xpath("//select[@name='color']/option[@value='1']")
-    color_blue = driver.find_element_by_xpath("//select[@name='color']/option[@value='3']")
-    color_orange = driver.find_element_by_xpath("//select[@name='color']/option[@value='6']")
-    color_red = driver.find_element_by_xpath("//select[@name='color']/option[@value='12']")
-    color_white = driver.find_element_by_xpath("//select[@name='color']/option[@value='4']")
+    color_black = driver.find_element_by_xpath("//select[@name='color']/option[@value='10']")
+    color_blue = driver.find_element_by_xpath("//select[@name='color']/option[@value='11']")
+    color_orange = driver.find_element_by_xpath("//select[@name='color']/option[@value='54']")
+    color_red = driver.find_element_by_xpath("//select[@name='color']/option[@value='68']")
+    color_white = driver.find_element_by_xpath("//select[@name='color']/option[@value='86']")
 
 
 

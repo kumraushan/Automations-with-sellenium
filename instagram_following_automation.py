@@ -18,7 +18,7 @@ time.sleep(2)
 
 #login credentials
 username = driver.find_element_by_name('username')
-username.send_keys('putatoe_graphics')
+username.send_keys('put_at_toe')
 password = driver.find_element_by_name('password')
 password.send_keys('putatoegraphics0123')
 login = driver.find_element_by_xpath('//button[normalize-space()="Log In"]')

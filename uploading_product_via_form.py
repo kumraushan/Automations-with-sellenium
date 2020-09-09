@@ -10,7 +10,7 @@ loc = 'chromedriver_linux64/chromedriver'
 driver = webdriver.Chrome(loc)
 
 #getting the webpage
-driver.get("http://web.thedirtylaundry.in/")
+driver.get("http://admin.thedirtylaundry.in/")
 
 #login credentials
 username = driver.find_element_by_id('id_username')
@@ -39,7 +39,7 @@ for item in data:
     #getting the webelements by locator
 
     select = Select(driver.find_element_by_name('product_type'))
-    select.select_by_value('3')
+    select.select_by_value('1')
     name = driver.find_element_by_name('name')
     spec = driver.find_element_by_id('id_specification')
     short_desc = driver.find_element_by_id('id_short_desp')
@@ -47,8 +47,8 @@ for item in data:
     discount = driver.find_element_by_id('id_discount')
     delivery = driver.find_element_by_id('id_del_price')
     status = driver.find_element_by_id('id_status')
-    sizes = driver.find_elements_by_name('size')
-    colours = driver.find_elements_by_xpath("//*[@class='Blue' or @class='Red' or @class='Black' or @class='White' or @class='Orange']")
+    sizes = driver.find_elements_by_xpath("//*[@id='id_size_0' or @id='id_size_1' or @id='id_size_2' or @id='id_size_3']")
+    colours = driver.find_elements_by_xpath("//*[@id='id_color_9' or @id='id_color_10' or @id='id_color_53' or @id='id_color_66' or @id='id_color_85']")
     #print(colours)
     file_upload = driver.find_element_by_name('myfile')
     submit = driver.find_element_by_name("Submit")
@@ -63,13 +63,13 @@ for item in data:
     status.click()
     for size in sizes:
         size.click()
-    urllib.request.urlretrieve(item[2], "/home/raushan/Desktop/making_automations/putatoe_images/putatoe.png")
-    file_upload.send_keys("/home/raushan/Desktop/making_automations/putatoe_images/putatoe.png")  #replace your image folder with atleast one image
+    urllib.request.urlretrieve(item[2], "/home/raushan/Desktop/making_automations/putatoe_images/putatoe.jpg")
+    file_upload.send_keys("/home/raushan/Desktop/making_automations/putatoe_images/putatoe.jpg")  #replace your image folder with atleast one image
     for colour in colours:
         colour.click()
     submit.click()
     time.sleep(2)
-    driver.get("http://web.thedirtylaundry.in/product/")
+    driver.get("http://admin.thedirtylaundry.in/product/")
 
     excel_size = (item[10].split(','))
     #print(excel_size[1])
