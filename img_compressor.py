@@ -39,29 +39,30 @@ i=1
 for item in data:
 #looping through the data
     file_upload = driver.find_element_by_name('mainimage')
-    urllib.request.urlretrieve(item[2], "/home/raushan/Desktop/making_automations/putatoe_images/putatoe.jpg")
     file_name =("/home/raushan/Desktop/making_automations/putatoe_images/putatoe.jpg")
-    im =Image.open(file_name)
-    #print(im)
-    #path = BytesIO(urllib.request.urlopen(item[2]).read())
-    #print(im.tell())
-    print(f"The image size dimensions are: {im.size}")
-    rgb_im = im.convert('RGB')
-    rgb_im.save(file_name,optimize=True,quality=50)
-    print(rgb_im.size)
-    #print(rgb_im.tell())
-    file_upload.send_keys(
-    "/home/raushan/Desktop/making_automations/putatoe_images/putatoe.jpg")  # replace your image folder with atleast one image
+    url = item[2]
+    path = (urllib.request.urlopen(url).read())
+    size = (float(len(path))/1000)
+    print(size)
+    if size > 200.00:
+        im = Image.open(BytesIO(path))
+        print(f"The image size dimensions are: {im.size}")
+        rgb_im = im.convert('RGB')
+        rgb_im.save(file_name,optimize=True,quality=50)
+        print(rgb_im.size)
 
-    button = driver.find_element_by_tag_name('button')
-    #print(button)
-    button.click()
-    time.sleep(30)
-    element = WebDriverWait(driver, 50).until(EC.presence_of_element_located((By.TAG_NAME, "textarea")))
-    #print(element)
-    url = element.get_attribute('value')
-    print(url)
+        file_upload.send_keys(
+        "/home/raushan/Desktop/making_automations/putatoe_images/putatoe.jpg")  # replace your image folder with atleast one image
 
+        button = driver.find_element_by_tag_name('button')
+        button.click()
+        time.sleep(30)
+
+        element = WebDriverWait(driver, 50).until(EC.presence_of_element_located((By.TAG_NAME, "textarea")))
+        url = element.get_attribute('value')
+        print(url)
+
+    #writing the url in excel sheet
     wb_sheet.write(i, 13, url)
     wb.save(file_location)
     i+=1
